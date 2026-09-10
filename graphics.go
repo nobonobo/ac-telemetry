@@ -47,10 +47,10 @@ type Graphics struct {
 	PacketId              int32          `json:"packet_id"`                         // *パケット番号
 	Status                int32          `json:"status,omitempty"`                  // ACStatus
 	Session               int32          `json:"session,omitempty"`                 // ACSessionType
-	CurrentTime           [15]uint16     `json:"-"`                                 // wchar_t[15] — 現在ラップタイム文字列
-	LastTime              [15]uint16     `json:"-"`                                 // wchar_t[15] — 前ラップタイム文字列
-	BestTime              [15]uint16     `json:"-"`                                 // wchar_t[15] — ベストラップタイム文字列
-	Split                 [15]uint16     `json:"-"`                                 // wchar_t[15] — 区間タイム文字列
+	CurrentTime           [15]uint16     `json:"current_time"`                      // wchar_t[15] — 現在ラップタイム文字列
+	LastTime              [15]uint16     `json:"last_time"`                         // wchar_t[15] — 前ラップタイム文字列
+	BestTime              [15]uint16     `json:"best_time"`                         // wchar_t[15] — ベストラップタイム文字列
+	Split                 [15]uint16     `json:"split"`                             // wchar_t[15] — 区間タイム文字列
 	CompletedLaps         int32          `json:"completed_laps,omitempty"`          // 完了ラップ数
 	Position              int32          `json:"position,omitempty"`                // 順位
 	ICurrentTime          int32          `json:"current_time_ms,omitempty"`         // 現在ラップタイム (ms)
@@ -62,7 +62,7 @@ type Graphics struct {
 	CurrentSectorIndex    int32          `json:"current_sector_index,omitempty"`    // 現在のセクターインデックス
 	LastSectorTime        int32          `json:"last_sector_time_ms,omitempty"`     // 前セクタータイム (ms)
 	NumberOfLaps          int32          `json:"number_of_laps,omitempty"`          // セッション総ラップ数
-	TyreCompound          [33]uint16     `json:"-"`                                 // wchar_t[33] — タイヤコンパウンド名
+	TyreCompound          [33]uint16     `json:"tyre_compound"`                     // wchar_t[33] — タイヤコンパウンド名
 	ReplayTimeMultiplier  float32        `json:"replay_time_multiplier,omitempty"`  // リプレイ速度倍率
 	NormalizedCarPosition float32        `json:"normalized_car_position"`           // コース上の正規化位置 (0.0–1.0)
 	ActiveCars            int32          `json:"active_cars"`                       // アクティブ車両数

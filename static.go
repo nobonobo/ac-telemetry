@@ -5,22 +5,22 @@ package telemetry
 // フィールド順序・型は AssettoCorsaRallyTelemetryReader の StaticInfo.cs
 // (StructLayout Pack=4, CharSet=Unicode) に完全準拠しています。
 type StaticInfo struct {
-	SMVersion                [15]uint16 `json:"-"`                                     // SMバージョン
-	ACVersion                [15]uint16 `json:"-"`                                     // ACバージョン
+	SMVersion                [15]uint16 `json:"sm_version"`                            // SMバージョン
+	ACVersion                [15]uint16 `json:"ac_version"`                            // ACバージョン
 	NumberOfSessions         int32      `json:"number_of_sessions,omitempty"`          // セッション数
 	NumCars                  int32      `json:"num_cars,omitempty"`                    // 車両数
-	CarModel                 [33]uint16 `json:"-"`                                     // *カーモデル名
-	Track                    [33]uint16 `json:"-"`                                     // トラック
-	PlayerName               [33]uint16 `json:"-"`                                     // プレイヤー名
-	PlayerSurname            [33]uint16 `json:"-"`                                     // プレイヤー姓
-	PlayerNick               [33]uint16 `json:"-"`                                     // プレイヤーニックネーム
+	CarModel                 [33]uint16 `json:"car_model"`                             // *カーモデル名
+	Track                    [33]uint16 `json:"track"`                                 // トラック
+	PlayerName               [33]uint16 `json:"player_name"`                           // プレイヤー名
+	PlayerSurname            [33]uint16 `json:"player_surname"`                        // プレイヤー姓
+	PlayerNick               [33]uint16 `json:"player_nick"`                           // プレイヤーニックネーム
 	SectorCount              int32      `json:"sector_count,omitempty"`                // セクター数
 	MaxTorque                float32    `json:"max_torque,omitempty"`                  // 最大トルク
 	MaxPower                 float32    `json:"max_power,omitempty"`                   // 最大パワー
 	MaxRpm                   int32      `json:"max_rpm,omitempty"`                     // 最大回転数
 	MaxFuel                  float32    `json:"max_fuel,omitempty"`                    // 最大燃料
-	SuspensionMaxTravel      [4]float32 `json:"-"`                                     // サスペンション最大トラベル
-	TyreRadius               [4]float32 `json:"-"`                                     // タイヤ半径
+	SuspensionMaxTravel      [4]float32 `json:"suspension_max_travel"`                 // サスペンション最大トラベル
+	TyreRadius               [4]float32 `json:"tyre_radius"`                           // タイヤ半径
 	MaxTurboBoost            float32    `json:"max_turbo_boost,omitempty"`             // 最大ターボブースト
 	Deprecated_1             float32    `json:"deprecated_1,omitempty"`                // 廃止
 	Deprecated_2             float32    `json:"deprecated_2,omitempty"`                // 廃止
@@ -39,17 +39,17 @@ type StaticInfo struct {
 	EngineBrakeSettingsCount int32      `json:"engine_brake_settings_count,omitempty"` // エンジンブレーキ設定数
 	ErsPowerControllerCount  int32      `json:"ers_power_controller_count,omitempty"`  // ERSパワーコントロール数
 	TrackSplineLength        float32    `json:"track_spline_length"`                   // *トラックの標準長 m
-	TrackConfiguration       [33]uint16 `json:"-"`                                     // トラックコンフィギュレーション
+	TrackConfiguration       [33]uint16 `json:"track_configuration"`                   // トラックコンフィギュレーション
 	ErsMaxJ                  float32    `json:"ers_max_j,omitempty"`                   // ERS最大エネルギー
 	IsTimedRace              int32      `json:"is_timed_race,omitempty"`               // タイムレース
 	HasExtraLap              int32      `json:"has_extra_lap,omitempty"`               // エキストララップ
-	CarSkin                  [33]uint16 `json:"-"`                                     // 車両スキン
+	CarSkin                  [33]uint16 `json:"car_skin"`                              // 車両スキン
 	ReversedGridPositions    int32      `json:"reversed_grid_positions,omitempty"`     // リバースグリッドポジション
 	PitWindowStart           int32      `json:"pit_window_start,omitempty"`            // ピットウィンドウ開始
 	PitWindowEnd             int32      `json:"pit_window_end,omitempty"`              // ピットウィンドウ終了
 	IsOnline                 int32      `json:"is_online,omitempty"`                   // オンライン
-	DryTyresName             [33]uint16 `json:"-"`                                     // ドライタイヤ名
-	WetTyresName             [33]uint16 `json:"-"`                                     // ウェットタイヤ名
+	DryTyresName             [33]uint16 `json:"dry_tyres_name"`                        // ドライタイヤ名
+	WetTyresName             [33]uint16 `json:"wet_tyres_name"`                        // ウェットタイヤ名
 }
 
 func (s *StaticInfo) SMVersionString() string {

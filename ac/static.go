@@ -1,4 +1,20 @@
-package telemetry
+package ac
+
+import (
+	telemetry "github.com/nobonobo/ac-telemetry"
+)
+
+type StaticInfoView struct {
+	*telemetry.View
+}
+
+func NewStaticInfo() *StaticInfoView {
+	return &StaticInfoView{View: telemetry.NewView(`Local\acpmf_static`)}
+}
+
+func (v *StaticInfoView) Get() *StaticInfo {
+	return (*StaticInfo)(v.Ptr())
+}
 
 // StaticInfo は Assetto Corsa の acpmf_static 共有メモリ構造体を表します。
 // セッション開始時のみ更新される（*コメントの項目のみ）
@@ -53,45 +69,45 @@ type StaticInfo struct {
 }
 
 func (s *StaticInfo) SMVersionString() string {
-	return DecodeString(s.SMVersion[:])
+	return telemetry.DecodeString(s.SMVersion[:])
 }
 
 func (s *StaticInfo) ACVersionString() string {
-	return DecodeString(s.ACVersion[:])
+	return telemetry.DecodeString(s.ACVersion[:])
 }
 
 func (s *StaticInfo) CarModelString() string {
-	return DecodeString(s.CarModel[:])
+	return telemetry.DecodeString(s.CarModel[:])
 }
 
 func (s *StaticInfo) TrackString() string {
-	return DecodeString(s.Track[:])
+	return telemetry.DecodeString(s.Track[:])
 }
 
 func (s *StaticInfo) PlayerNameString() string {
-	return DecodeString(s.PlayerName[:])
+	return telemetry.DecodeString(s.PlayerName[:])
 }
 
 func (s *StaticInfo) PlayerSurnameString() string {
-	return DecodeString(s.PlayerSurname[:])
+	return telemetry.DecodeString(s.PlayerSurname[:])
 }
 
 func (s *StaticInfo) PlayerNickString() string {
-	return DecodeString(s.PlayerNick[:])
+	return telemetry.DecodeString(s.PlayerNick[:])
 }
 
 func (s *StaticInfo) TrackConfigurationString() string {
-	return DecodeString(s.TrackConfiguration[:])
+	return telemetry.DecodeString(s.TrackConfiguration[:])
 }
 
 func (s *StaticInfo) CarSkinString() string {
-	return DecodeString(s.CarSkin[:])
+	return telemetry.DecodeString(s.CarSkin[:])
 }
 
 func (s *StaticInfo) DryTyresNameString() string {
-	return DecodeString(s.DryTyresName[:])
+	return telemetry.DecodeString(s.DryTyresName[:])
 }
 
 func (s *StaticInfo) WetTyresNameString() string {
-	return DecodeString(s.WetTyresName[:])
+	return telemetry.DecodeString(s.WetTyresName[:])
 }

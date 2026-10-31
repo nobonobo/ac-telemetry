@@ -48,7 +48,7 @@ telemetry := &Telemetry{
 | NumberOfSessions | int32 | セッション数 |
 | NumCars | int32 | 車両数 |
 | CarModel | [33]uint16 | *カーモデル名 |
-| Track | [33]uint16 | トラック |
+| Track | [33]uint16 | *トラック |
 | PlayerName | [33]uint16 | プレイヤー名 |
 | PlayerSurname | [33]uint16 | プレイヤー姓 |
 | PlayerNick | [33]uint16 | プレイヤーニックネーム |
@@ -115,7 +115,7 @@ telemetry := &Telemetry{
 | ReplayTimeMultiplier | float32 | リプレイ速度倍率 |
 | NormalizedCarPosition | float32 | コース上の正規化位置 (0.0-1.0) |
 | ActiveCars | int32 | アクティブ車両数 |
-| CarCoordinates | [60][3]float32 | *全車両3D座標 [car_id][X,Y,Z] |
+| CarCoordinates | [60]telemetry.Coordinates | *全車両3D座標 [car_id][X,Y,Z] |
 | CarId | [60]int32 | 全車両ID |
 | PlayerCarId | int32 | *プレイヤー車両ID (常にゼロ) |
 | PenaltyTime | float32 | *ペナルティ時間 (秒) |
@@ -158,8 +158,8 @@ telemetry := &Telemetry{
 | Rpms | int32 | *エンジン回転数 |
 | SteerAngle | float32 | *ステアリング角度 |
 | SpeedKmh | float32 | *速度 km/h |
-| Velocity | [3]float32 | *ワールド座標速度 (X,Y,Z) m/s |
-| AccG | [3]float32 | *G力 (X,Y,Z) |
+| Velocity | telemetry.Coordinates | *ワールド座標速度 (X,Y,Z) m/s |
+| AccG | telemetry.Coordinates | *G力 (X,Y,Z) |
 | WheelSlip | [4]float32 | *タイヤスリップ [FL,FR,RL,RR] |
 | WheelLoad | [4]float32 | *タイヤ荷重 [FL,FR,RL,RR] |
 | WheelsPressure | [4]float32 | *タイヤ空気圧 [FL,FR,RL,RR] psi |
@@ -187,7 +187,7 @@ telemetry := &Telemetry{
 | AirDensity | float32 | 空気密度 |
 | AirTemp | float32 | 気温 K |
 | RoadTemp | float32 | 路面温度 K |
-| LocalAngularVel | [3]float32 | ローカル角速度 (X,Y,Z) rad/s |
+| LocalAngularVel | telemetry.Coordinates | ローカル角速度 (X,Y,Z) rad/s |
 | FinalFF | float32 | *最終FFB出力 |
 | PerformanceMeter | float32 | パフォーマンスメーター |
 | EngineBrake | int32 | エンジンブレーキ設定 |
@@ -208,7 +208,7 @@ telemetry := &Telemetry{
 | TyreContactNormal | [4]Coordinates | *タイヤ接触法線 [FL,FR,RL,RR] |
 | TyreContactHeading | [4]Coordinates | *タイヤ接触向き [FL,FR,RL,RR] |
 | BrakeBias | float32 | *ブレーキバランス前後比 |
-| LocalVelocity | [3]float32 | *ローカル座標速度 (X,Y,Z) m/s |
+| LocalVelocity | telemetry.Coordinates | *ローカル座標速度 (X,Y,Z) m/s |
 | P2PActivations | int32 | P2P有効化数 |
 | P2PStatus | int32 | P2P状態 |
 | CurrentMaxRpm | int32 | *現在の最大回転数 |
